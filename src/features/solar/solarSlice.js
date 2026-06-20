@@ -4,7 +4,7 @@ import axios from "axios";
 /* =========================
    BASE URL (IMPORTANT FIX)
 ========================= */
-// const API = "http://localhost:5000/api/solar";
+
 const API = `${import.meta.env.VITE_API_URL}/api/solar`;
 /* =========================
    CREATE SOLAR VENDOR
