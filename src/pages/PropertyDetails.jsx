@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProperty } from "../features/property/propertySlice";
-import dummyProperties from "../data/Properties";
+import dummyProperties from "../data/properties";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
