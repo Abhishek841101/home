@@ -9,8 +9,11 @@ export default function Solar() {
   useEffect(() => {
     const fetchSolar = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/solar");
-        const data = await res.json();
+        const API_URL = import.meta.env.VITE_API_URL;
+const res = await fetch(`${API_URL}/api/solar`);
+const data = await res.json();
+        // const res = await fetch("http://localhost:5000/api/solar");
+        // const data = await res.json();
 
         if (data.success) {
           setVendors(data.solarList);
@@ -60,11 +63,12 @@ export default function Solar() {
               >
                 {/* IMAGE */}
                 <img
+                  // 
                   src={
-                    v.image
-                      ? `http://localhost:5000/${v.image}`
-                      : "https://via.placeholder.com/400"
-                  }
+  v.image
+    ? `${import.meta.env.VITE_API_URL}/${v.image}`
+    : "https://via.placeholder.com/400"
+}
                   className="h-52 w-full object-cover"
                   alt="solar"
                 />

@@ -10,12 +10,13 @@ export default function RealEstate() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   /* FETCH FROM BACKEND */
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/properties");
+        const res = await fetch(`${API_URL}/api/properties`);
         const data = await res.json();
 
         console.log("Response Status:", data);
@@ -128,11 +129,15 @@ function PropertyCard({ item }) {
     <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition border border-gray-100 group">
       {/* IMAGE */}
       <div className="relative h-52 overflow-hidden">
-        <img
-          src={images[index]}
-          alt={item.propertyName}
-          className="h-52 w-full object-cover group-hover:scale-105 transition duration-500"
-        />
+       <img
+  src={
+    images[index]?.startsWith("http")
+      ? images[index]
+      : `${API_URL}/${images[index]}`
+  }
+  alt={item.propertyName}
+  className="h-52 w-full object-cover group-hover:scale-105 transition duration-500"
+/>
 
         {/* MAP BUTTON */}
         <button
