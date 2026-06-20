@@ -5,15 +5,14 @@ export default function Solar() {
   const [vendors, setVendors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchSolar = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_URL;
 const res = await fetch(`${API_URL}/api/solar`);
 const data = await res.json();
-        // const res = await fetch("http://localhost:5000/api/solar");
-        // const data = await res.json();
+       
 
         if (data.success) {
           setVendors(data.solarList);
